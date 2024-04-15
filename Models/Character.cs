@@ -4,11 +4,24 @@
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string CharacterClass { get; set; }
-        public string CharacterRace { get; set; }
+        public CharacterRace CharacterRace { get; set; }
+        public CharacterClass CharacterClass { get; set; }
+        public Attributes CharacterAttributes { get; set; }
     }
 
-    public class CharacterAttributes
+    public class CharacterRace
+    {
+        public string Race { get; set; }
+        public string? Subrace { get; set; }
+    }
+
+    public class CharacterClass
+    {
+        public string CharClass { get; set; }
+        public string? SubClass { get; set; }
+    }
+
+    public class Attributes
     {
         public int Strength { get; set; }
         public int Dexterity { get; set; }
