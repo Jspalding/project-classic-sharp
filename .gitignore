@@ -1,0 +1,37 @@
+# Ignore Visual Studio files
+.vs/
+*.vscode/
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.log
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.sln.docstates
+*.dll
+*.pdb
+*.exe
+*.cache
+*.json
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore NuGet package directories
+packages/
+
+# Ignore ReSharper files
+_ReSharper*/
+
+# Ignore temporary files
+[Tt]emp/
+[Oo]bj/

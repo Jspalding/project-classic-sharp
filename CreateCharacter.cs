@@ -5,6 +5,7 @@ public class CreateCharacter
     {
         CharacterRace characterRace = new CharacterRace();
         CharacterClass characterClass = new CharacterClass();
+        Attributes characterAttributes = new Attributes();
 
         Console.WriteLine("What is your character's first name?");
         character.FirstName = Console.ReadLine();
@@ -19,6 +20,9 @@ public class CreateCharacter
 
         characterClass = SelectCharacterClass();
         character.CharacterClass = characterClass;
+
+        characterAttributes = RollCharacterAttributes();
+        character.CharacterAttributes = characterAttributes;
 
         return character;
     }
@@ -63,7 +67,6 @@ public class CreateCharacter
 
         //TODO
         //Add character sub race select
-
         return characterRace;
     }
 
@@ -105,7 +108,32 @@ public class CreateCharacter
             }
         }
 
-
+        //TODO
+        //Add character sub class select
         return characterClass;
+    }
+
+    private static Attributes RollCharacterAttributes()
+    {
+        Console.WriteLine("Time to roll for character stats!");
+
+        Attributes characterAttributes = new Attributes
+        {
+            Strength = DiceRolls.RollAttribute(0),
+            Dexterity = DiceRolls.RollAttribute(0),
+            Constitution = DiceRolls.RollAttribute(0),
+            Intelligence = DiceRolls.RollAttribute(0),
+            Wisdom = DiceRolls.RollAttribute(0),
+            Charisma = DiceRolls.RollAttribute(0)
+        };
+
+        Console.WriteLine($"Strength: {characterAttributes.Strength}");
+        Console.WriteLine($"Dexterity: {characterAttributes.Dexterity}");
+        Console.WriteLine($"Constitution: {characterAttributes.Constitution}");
+        Console.WriteLine($"Intelligence: {characterAttributes.Intelligence}");
+        Console.WriteLine($"Wisdom: {characterAttributes.Wisdom}");
+        Console.WriteLine($"Charisma: {characterAttributes.Charisma}");
+
+        return characterAttributes;
     }
 }
