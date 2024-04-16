@@ -3,6 +3,8 @@ public class CreateCharacter
 {
     public static Character CreateNewCharacter(Character character)
     {
+        CharacterRace characterRace = new CharacterRace();
+
         Console.WriteLine("What is your character's first name?");
         character.FirstName = Console.ReadLine();
         Helpers.CheckEmptyUserInput(character, "FirstName");
@@ -11,7 +13,8 @@ public class CreateCharacter
         character.LastName = Console.ReadLine();
         Helpers.CheckEmptyUserInput(character, "LastName");
 
-        SelectCharacterRace();
+        characterRace = SelectCharacterRace();
+        character.CharacterRace = characterRace;
 
         return character;
     }
@@ -19,12 +22,13 @@ public class CreateCharacter
     private static CharacterRace SelectCharacterRace()
     {
         CharacterRace characterRace = new CharacterRace();
-        List<Races> races = new List<Races>();
+        List<string> races = new List<string>();
         int raceOptionNumber = 1;
 
+        //Map races enum to list
         foreach (Races race in Enum.GetValues(typeof(Races)))
         {
-            races.Add(race);
+            races.Add(race.ToString());
         }
 
         Console.WriteLine("Select your character's race:");
@@ -34,6 +38,27 @@ public class CreateCharacter
             raceOptionNumber++;
         }
 
+        //Capture selected race
+        while (true)
+        {
+            string selectedValue = Console.ReadLine();
+
+            if (int.TryParse(selectedValue, out raceOptionNumber))
+            {
+                Races selectedRace = (Races)raceOptionNumber;
+                Console.WriteLine($"You have selected {selectedRace} as your character's race. ");
+
+                characterRace.Races = selectedRace;
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Please select an option by it's number.");
+            }
+        }
+
+        //TODO
+        //Add character sub race select
 
         return characterRace;
     }
