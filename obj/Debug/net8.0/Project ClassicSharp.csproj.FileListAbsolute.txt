@@ -12,3 +12,4 @@ D:\Dev\Source\.NET\Project ClassicSharp\Project ClassicSharp\obj\Debug\net8.0\re
 D:\Dev\Source\.NET\Project ClassicSharp\Project ClassicSharp\obj\Debug\net8.0\Project ClassicSharp.pdb
 D:\Dev\Source\.NET\Project ClassicSharp\Project ClassicSharp\obj\Debug\net8.0\Project ClassicSharp.genruntimeconfig.cache
 D:\Dev\Source\.NET\Project ClassicSharp\Project ClassicSharp\obj\Debug\net8.0\ref\Project ClassicSharp.dll
+D:\Dev\Source\.NET\Project ClassicSharp\Project ClassicSharp\obj\Debug\net8.0\Project ClassicSharp.sourcelink.json
