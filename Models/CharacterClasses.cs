@@ -4,14 +4,14 @@ public enum Classes
     // Bard,
     // Cleric,
     // Druid,
-    Fighter,
+    Fighter = 1,
     // Monk,
     // Paladin,
     // Ranger,
-    Rogue,
+    Rogue = 2,
     // Sorceror,
     // Warlock,
-    Wizard
+    Wizard = 3
 }
 
 public class CharacterClass
