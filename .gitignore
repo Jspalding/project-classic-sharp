@@ -35,3 +35,5 @@ _ReSharper*/
 # Ignore temporary files
 [Tt]emp/
 [Oo]bj/
+obj/Debug/net8.0/Project ClassicSharp.AssemblyInfo.cs
+obj/Debug/net8.0/Project ClassicSharp.AssemblyInfoInputs.cache

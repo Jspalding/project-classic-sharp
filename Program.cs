@@ -22,7 +22,9 @@ class DnDTableTop
         // Add confirm for stat
         // Add confirm for race/class selects
         // Add Main menu
-        // 
+        // Add race/class modifiers
+        // Add sub races/classes
+        // Add backgrounds and modifiers
 
         Console.WriteLine("\n");
         Console.WriteLine("**************************************************");
