@@ -7,13 +7,13 @@ public class CreateCharacter
         CharacterClass characterClass = new CharacterClass();
         Attributes characterAttributes = new Attributes();
 
-        Console.WriteLine("What is your character's first name?");
-        character.FirstName = Console.ReadLine();
-        Helpers.CheckEmptyUserInput(character, "FirstName");
-
-        Console.WriteLine("What is your character's last name?");
-        character.LastName = Console.ReadLine();
-        Helpers.CheckEmptyUserInput(character, "LastName");
+        Console.WriteLine("\n");
+        Console.WriteLine("****************************");
+        Console.WriteLine("Creating a new character");
+        Console.WriteLine("****************************");
+        Console.WriteLine("What is your character's name?");
+        character.Name = Console.ReadLine();
+        Helpers.CheckEmptyUserInput(character, "Name");
 
         characterRace = SelectCharacterRace();
         character.CharacterRace = characterRace;
@@ -39,6 +39,7 @@ public class CreateCharacter
             races.Add(race.ToString());
         }
 
+        Console.WriteLine("\n");
         Console.WriteLine("Select your character's race:");
         foreach (var race in races)
         {
@@ -76,12 +77,13 @@ public class CreateCharacter
         List<string> classes = new List<string>();
         int classOptionNumber = 1;
 
-        //Map races enum to list
+        //Map class enum to list
         foreach (Classes currentClass in Enum.GetValues(typeof(Classes)))
         {
             classes.Add(currentClass.ToString());
         }
 
+        Console.WriteLine("\n");
         Console.WriteLine("Select your character's class:");
         foreach (var currentClass in classes)
         {
@@ -115,7 +117,9 @@ public class CreateCharacter
 
     private static Attributes RollCharacterAttributes()
     {
-        Console.WriteLine("Time to roll for character stats!");
+        Console.WriteLine("\n");
+        Console.WriteLine("Rolling for character stats using standard roll rules...");
+        Thread.Sleep(300);
 
         Attributes characterAttributes = new Attributes
         {
@@ -128,11 +132,17 @@ public class CreateCharacter
         };
 
         Console.WriteLine($"Strength: {characterAttributes.Strength}");
+        Thread.Sleep(300);
         Console.WriteLine($"Dexterity: {characterAttributes.Dexterity}");
+        Thread.Sleep(300);
         Console.WriteLine($"Constitution: {characterAttributes.Constitution}");
+        Thread.Sleep(300);
         Console.WriteLine($"Intelligence: {characterAttributes.Intelligence}");
+        Thread.Sleep(300);
         Console.WriteLine($"Wisdom: {characterAttributes.Wisdom}");
+        Thread.Sleep(300);
         Console.WriteLine($"Charisma: {characterAttributes.Charisma}");
+        Thread.Sleep(300);
 
         return characterAttributes;
     }

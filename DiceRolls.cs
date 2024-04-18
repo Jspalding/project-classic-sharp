@@ -1,19 +1,40 @@
 public class DiceRolls
 {
-    //Roll a dice, between 1 and specified dice size
-    public static int RollDice(int diceSize, int modifier)
+    /// <summary>
+    ///Roll a dice, choose dice size (d20 etc), how many rolls, and any modifiers
+    /// </summary>
+    public static List<int> RollDice(int diceSize, int rollsCount, int modifier, bool isAttributeRoll)
     {
         Random dice = new Random();
-        int result = dice.Next(1, diceSize);
 
-        if (modifier == 0 || modifier == -1)
+        List<int> rolls = new List<int>();
+
+        for (int i = 0; i < rollsCount; i++)
         {
-            return result;
+            var roll = dice.Next(1, diceSize);
+
+            if (modifier == 0 || modifier == -1)
+            {
+                rolls.Add(roll);
+
+                if (!isAttributeRoll)
+                {
+                    Console.WriteLine($"You rolled {roll}!");
+                }
+            }
+            else
+            {
+                var modifiedRoll = roll + modifier;
+                rolls.Add(modifiedRoll);
+
+                if (!isAttributeRoll)
+                {
+                    Console.WriteLine($"You rolled {modifiedRoll} ({roll} + {modifier} modifier)!");
+                }
+            }
         }
-        else
-        {
-            return result + modifier;
-        }
+
+        return rolls;
     }
 
     //Roll 4x D6 and total the 3 highest values
@@ -23,7 +44,7 @@ public class DiceRolls
 
         for (int i = 0; i < 4; i++)
         {
-            rolls.Add(RollDice(6, modifier));
+            rolls.Add(RollDice(6, 1, modifier, true).First());
         }
 
         int total = rolls.Sum() - rolls.Min();

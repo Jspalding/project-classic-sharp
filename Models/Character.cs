@@ -1,7 +1,6 @@
 ﻿public class Character
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string Name { get; set; }
     public CharacterRace CharacterRace { get; set; }
     public CharacterClass CharacterClass { get; set; }
     public Attributes CharacterAttributes { get; set; }
