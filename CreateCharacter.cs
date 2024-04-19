@@ -34,7 +34,6 @@ public class CreateCharacter
         List<string> races = new List<string>();
 
         int raceOptionNumber = 1;
-        string confirmChoice = "";
 
         //Map races enum to list
         foreach (Races race in Enum.GetValues(typeof(Races)))
@@ -60,7 +59,7 @@ public class CreateCharacter
                 Races selectedRace = (Races)raceOptionNumber;
 
                 Console.WriteLine($"Are you sure you want to be an {selectedRace}? (y/n)");
-                confirmChoice = Console.ReadLine();
+                string confirmChoice = Console.ReadLine();
 
                 if (confirmChoice == "y" || confirmChoice == "Y")
                 {
@@ -96,7 +95,6 @@ public class CreateCharacter
         List<string> classes = new List<string>();
 
         int classOptionNumber = 1;
-        string confirmChoice = "";
 
         //Map class enum to list
         foreach (Classes currentClass in Enum.GetValues(typeof(Classes)))
@@ -122,7 +120,7 @@ public class CreateCharacter
                 Classes selectedClass = (Classes)classOptionNumber;
 
                 Console.WriteLine($"Are you sure you want to be an {selectedClass}? (y/n)");
-                confirmChoice = Console.ReadLine();
+                string confirmChoice = Console.ReadLine();
 
                 if (confirmChoice == "y" || confirmChoice == "Y")
                 {
@@ -151,7 +149,7 @@ public class CreateCharacter
     private static Attributes RollCharacterAttributes()
     {
         Console.WriteLine("\n");
-        Console.WriteLine("Rolling for character stats using standard roll rules...");
+        Console.WriteLine("Rolling for character stats using standard 5E roll rules...");
         Thread.Sleep(300);
 
         Attributes characterAttributes = new Attributes
@@ -178,5 +176,25 @@ public class CreateCharacter
         Thread.Sleep(300);
 
         return characterAttributes;
+    }
+
+    private static Attributes AssignStandardArrayAttributes()
+    {
+        Attributes characterAttributes = new Attributes();
+
+        List<int> standardArrayAttributes = new List<int> {
+            8, 10, 12, 13, 14, 15
+        };
+
+        Console.WriteLine("Starting standard array process");
+
+        Console.WriteLine("Choose one of 8, 10, 12, 13, 14, 15 to assign to an attribute.");
+        Thread.Sleep(300);
+        Console.WriteLine("Strength:");
+        // assignValue = Console.ReadLine();
+        // int x = int.TryParse(assignValue, out characterAttributes.Strength);
+
+        return characterAttributes;
+
     }
 }
