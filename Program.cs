@@ -19,7 +19,6 @@ class DnDTableTop
         CharacterSummary.DisplayCharacterSummary(newCharacter);
 
         //TODO: 
-        // Add this page to own method (characterComplete, move to CreateCharacter)
         // Add confirm for stat
         // Add confirm for race/class selects
         // Add Main menu

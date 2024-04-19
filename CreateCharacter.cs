@@ -14,6 +14,7 @@ public class CreateCharacter
         Console.WriteLine("What is your character's name?");
         character.Name = Console.ReadLine();
         Helpers.CheckEmptyUserInput(character, "Name");
+        Console.WriteLine($"You named your character {character.Name}.");
 
         characterRace = SelectCharacterRace();
         character.CharacterRace = characterRace;
@@ -31,7 +32,9 @@ public class CreateCharacter
     {
         CharacterRace characterRace = new CharacterRace();
         List<string> races = new List<string>();
+
         int raceOptionNumber = 1;
+        string confirmChoice = "";
 
         //Map races enum to list
         foreach (Races race in Enum.GetValues(typeof(Races)))
@@ -55,10 +58,26 @@ public class CreateCharacter
             if (int.TryParse(selectedValue, out raceOptionNumber))
             {
                 Races selectedRace = (Races)raceOptionNumber;
-                Console.WriteLine($"You have selected {selectedRace} as your character's race. ");
 
-                characterRace.Race = selectedRace;
-                break;
+                Console.WriteLine($"Are you sure you want to be an {selectedRace}? (y/n)");
+                confirmChoice = Console.ReadLine();
+
+                if (confirmChoice == "y" || confirmChoice == "Y")
+                {
+                    Console.WriteLine($"You have selected {selectedRace} as your character's race. ");
+                    characterRace.Race = selectedRace;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Select your character's race:");
+                    foreach (var race in races)
+                    {
+                        Console.WriteLine($"{raceOptionNumber}. {race}");
+                        raceOptionNumber++;
+                    }
+                }
             }
             else
             {
@@ -75,7 +94,9 @@ public class CreateCharacter
     {
         CharacterClass characterClass = new CharacterClass();
         List<string> classes = new List<string>();
+
         int classOptionNumber = 1;
+        string confirmChoice = "";
 
         //Map class enum to list
         foreach (Classes currentClass in Enum.GetValues(typeof(Classes)))
@@ -99,14 +120,26 @@ public class CreateCharacter
             if (int.TryParse(selectedValue, out classOptionNumber))
             {
                 Classes selectedClass = (Classes)classOptionNumber;
-                Console.WriteLine($"You have selected {selectedClass} as your character's class. ");
 
-                characterClass.MainClass = selectedClass;
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Please select an option by it's number.");
+                Console.WriteLine($"Are you sure you want to be an {selectedClass}? (y/n)");
+                confirmChoice = Console.ReadLine();
+
+                if (confirmChoice == "y" || confirmChoice == "Y")
+                {
+                    Console.WriteLine($"You have selected {selectedClass} as your character's class. ");
+                    characterClass.MainClass = selectedClass;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Select your character's class:");
+                    foreach (var currentClass in classes)
+                    {
+                        Console.WriteLine($"{classOptionNumber}. {currentClass}");
+                        classOptionNumber++;
+                    }
+                }
             }
         }
 
