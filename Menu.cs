@@ -33,6 +33,8 @@ public class Menu
 
             Console.WriteLine($"{selected}{currentSelection}");
         }
+
+        Console.ResetColor();
     }
 
 

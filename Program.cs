@@ -44,11 +44,13 @@ class DnDTableTop
                 break;
 
             case 2:
+                Console.WriteLine("\n");
                 Console.WriteLine("Farewell, adventurer.");
                 Environment.Exit(0);
                 break;
 
             default:
+                Console.WriteLine("\n");
                 Console.WriteLine("Farewell, adventurer.");
                 Environment.Exit(0);
                 break;
@@ -57,6 +59,7 @@ class DnDTableTop
 
     private static void DisplayTabletop()
     {
+        Console.WriteLine("\n");
         Console.WriteLine("Coming soon...");
         Environment.Exit(0);
     }
