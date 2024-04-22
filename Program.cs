@@ -14,7 +14,6 @@ class DnDTableTop
         CreateMainMenu(titleArt);
 
         //TODO: 
-        // Fix blinking weirdness on menu
         // Add menu to all other selects (race, class etc)
         // Look further into Spectre.Console
         // Add select stat roll type menu
@@ -26,8 +25,9 @@ class DnDTableTop
 
     private static void CreateMainMenu(string titleArt)
     {
-        string[] mainMenuItems = ["Play", "Create", "Exit"];
+        List<string> mainMenuItems = ["Play", "Create", "Exit"];
         string mainMenuTitle = titleArt;
+
         int selectedIndex = 0;
 
         Menu mainMenu = new(mainMenuTitle, mainMenuItems);

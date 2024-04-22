@@ -1,22 +1,13 @@
-public class Menu
+public class Menu(string menuTitle, List<string> menuItems)
 {
-    string MenuTitle;
-    private string[] MenuItems;
     private int SelectedIndex = 0;
-
-    public Menu(string menuTitle, string[] menuItems)
-    {
-        MenuTitle = menuTitle;
-        MenuItems = menuItems;
-        SelectedIndex = 0;
-    }
 
     private void CreateMenu()
     {
-        Console.WriteLine($"{MenuTitle}");
-        for (int i = 0; i < MenuItems.Length; i++)
+        Console.WriteLine($"{menuTitle}");
+        for (int i = 0; i < menuItems.Count; i++)
         {
-            string currentSelection = MenuItems[i];
+            string currentSelection = menuItems[i];
             string selected = "";
 
             if (SelectedIndex == i)
@@ -55,7 +46,7 @@ public class Menu
             {
                 SelectedIndex++;
 
-                if (SelectedIndex == MenuItems.Length)
+                if (SelectedIndex == menuItems.Count)
                 {
                     SelectedIndex = 0;
                 }
@@ -67,7 +58,7 @@ public class Menu
 
                 if (SelectedIndex == -1)
                 {
-                    SelectedIndex = MenuItems.Length - 1;
+                    SelectedIndex = menuItems.Count - 1;
                 }
 
             }

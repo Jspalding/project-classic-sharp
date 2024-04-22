@@ -28,62 +28,54 @@ public class CreateCharacter
         return character;
     }
 
+    private static string CreateRaceSelectMenu(CharacterRace characterRace)
+    {
+        List<string> raceMenuItems = characterRace.Races;
+        string menuTitle = "Select a character race";
+        int selectedIndex = 0;
+
+        Menu mainMenu = new(menuTitle, raceMenuItems);
+        selectedIndex = mainMenu.NavigateMenu();
+
+        switch (selectedIndex)
+        {
+            case 0:
+                return raceMenuItems[0];
+
+            case 1:
+                return raceMenuItems[1];
+
+            case 2:
+                return raceMenuItems[2];
+            default:
+                return "";
+        }
+    }
+
     private static CharacterRace SelectCharacterRace()
     {
         CharacterRace characterRace = new CharacterRace();
-        List<string> races = new List<string>();
+        string selectedRace = "";
 
-        int raceOptionNumber = 1;
-
-        //Map races enum to list
-        foreach (Races race in Enum.GetValues(typeof(Races)))
-        {
-            races.Add(race.ToString());
-        }
-
-        Console.WriteLine("\n");
-        Console.WriteLine("Select your character's race:");
-        foreach (var race in races)
-        {
-            Console.WriteLine($"{raceOptionNumber}. {race}");
-            raceOptionNumber++;
-        }
+        selectedRace = CreateRaceSelectMenu(characterRace);
 
         //Capture selected race
         while (true)
         {
-            string selectedValue = Console.ReadLine();
+            Console.WriteLine($"Are you sure you want to be an {selectedRace}? (y/n)");
+            string confirmChoice = Console.ReadLine();
 
-            if (int.TryParse(selectedValue, out raceOptionNumber))
+            if (confirmChoice == "y" || confirmChoice == "Y")
             {
-                Races selectedRace = (Races)raceOptionNumber;
-
-                Console.WriteLine($"Are you sure you want to be an {selectedRace}? (y/n)");
-                string confirmChoice = Console.ReadLine();
-
-                if (confirmChoice == "y" || confirmChoice == "Y")
-                {
-                    Console.WriteLine($"You have selected {selectedRace} as your character's race. ");
-                    characterRace.Race = selectedRace;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Select your character's race:");
-                    foreach (var race in races)
-                    {
-                        Console.WriteLine($"{raceOptionNumber}. {race}");
-                        raceOptionNumber++;
-                    }
-                }
+                Console.WriteLine($"You have selected {selectedRace} as your character's race. ");
+                characterRace.Race = selectedRace;
+                break;
             }
             else
             {
-                Console.WriteLine("Please select an option by it's number.");
+                CreateRaceSelectMenu(characterRace);
             }
         }
-
         //TODO
         //Add character sub race select
         return characterRace;

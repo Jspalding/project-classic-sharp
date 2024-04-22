@@ -13,6 +13,8 @@ public enum Races
 
 public class CharacterRace
 {
-    public Races Race { get; set; }
+    public string Race { get; set; }
+    public List<string> Races = ["Dwarf", "Elf", "Human"];
+
     public string? Subrace { get; set; }
 }
