@@ -5,6 +5,8 @@ public class Menu(string menuTitle, List<string> menuItems)
     private void CreateMenu()
     {
         Console.WriteLine($"{menuTitle}");
+        Console.WriteLine("\n");
+
         for (int i = 0; i < menuItems.Count; i++)
         {
             string currentSelection = menuItems[i];

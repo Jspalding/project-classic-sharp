@@ -7,7 +7,7 @@ public class CreateCharacter
         CharacterClass characterClass = new CharacterClass();
         Attributes characterAttributes = new Attributes();
 
-        Console.WriteLine("\n");
+        Console.Clear();
         Console.WriteLine("****************************");
         Console.WriteLine("Creating a new character");
         Console.WriteLine("****************************");
@@ -31,7 +31,7 @@ public class CreateCharacter
     private static string CreateRaceSelectMenu(CharacterRace characterRace)
     {
         List<string> raceMenuItems = characterRace.Races;
-        string menuTitle = "Select a character race";
+        string menuTitle = "Select your character's race:";
         int selectedIndex = 0;
 
         Menu mainMenu = new(menuTitle, raceMenuItems);
@@ -62,6 +62,7 @@ public class CreateCharacter
         //Capture selected race
         while (true)
         {
+            Console.WriteLine("\n");
             Console.WriteLine($"Are you sure you want to be an {selectedRace}? (y/n)");
             string confirmChoice = Console.ReadLine();
 
@@ -81,56 +82,55 @@ public class CreateCharacter
         return characterRace;
     }
 
+    private static string CreateClassSelectMenu(CharacterClass characterClass)
+    {
+        List<string> classMenuItems = characterClass.Classes;
+        string menuTitle = "Select your character's class:";
+        int selectedIndex = 0;
+
+        Menu mainMenu = new(menuTitle, classMenuItems);
+        selectedIndex = mainMenu.NavigateMenu();
+
+        switch (selectedIndex)
+        {
+            case 0:
+                return classMenuItems[0];
+
+            case 1:
+                return classMenuItems[1];
+
+            case 2:
+                return classMenuItems[2];
+            default:
+                return "";
+        }
+    }
+
+
     private static CharacterClass SelectCharacterClass()
     {
         CharacterClass characterClass = new CharacterClass();
-        List<string> classes = new List<string>();
+        string selectedClass = "";
 
-        int classOptionNumber = 1;
+        selectedClass = CreateClassSelectMenu(characterClass);
 
-        //Map class enum to list
-        foreach (Classes currentClass in Enum.GetValues(typeof(Classes)))
-        {
-            classes.Add(currentClass.ToString());
-        }
-
-        Console.WriteLine("\n");
-        Console.WriteLine("Select your character's class:");
-        foreach (var currentClass in classes)
-        {
-            Console.WriteLine($"{classOptionNumber}. {currentClass}");
-            classOptionNumber++;
-        }
-
-        //Capture selected race
         while (true)
         {
-            string selectedValue = Console.ReadLine();
+            Console.WriteLine("\n");
+            Console.WriteLine($"Are you sure you want to be an {selectedClass}? (y/n)");
+            string confirmChoice = Console.ReadLine();
 
-            if (int.TryParse(selectedValue, out classOptionNumber))
+            if (confirmChoice == "y" || confirmChoice == "Y")
             {
-                Classes selectedClass = (Classes)classOptionNumber;
-
-                Console.WriteLine($"Are you sure you want to be an {selectedClass}? (y/n)");
-                string confirmChoice = Console.ReadLine();
-
-                if (confirmChoice == "y" || confirmChoice == "Y")
-                {
-                    Console.WriteLine($"You have selected {selectedClass} as your character's class. ");
-                    characterClass.MainClass = selectedClass;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Select your character's class:");
-                    foreach (var currentClass in classes)
-                    {
-                        Console.WriteLine($"{classOptionNumber}. {currentClass}");
-                        classOptionNumber++;
-                    }
-                }
+                Console.WriteLine($"You have selected {selectedClass} as your character's class. ");
+                characterClass.MainClass = selectedClass;
+                break;
             }
+            else
+            {
+                CreateClassSelectMenu(characterClass);
+            }
+
         }
 
         //TODO
@@ -140,7 +140,7 @@ public class CreateCharacter
 
     private static Attributes RollCharacterAttributes()
     {
-        Console.WriteLine("\n");
+        Console.Clear();
         Console.WriteLine("Rolling for character stats using standard 5E roll rules...");
         Thread.Sleep(300);
 

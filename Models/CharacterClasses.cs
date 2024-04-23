@@ -16,6 +16,7 @@ public enum Classes
 
 public class CharacterClass
 {
-    public Classes MainClass { get; set; }
+    public string MainClass { get; set; }
+    public List<string> Classes = ["Fighter", "Rogue", "Wizard"];
     public string? SubClass { get; set; }
 }

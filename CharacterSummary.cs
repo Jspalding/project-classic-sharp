@@ -3,7 +3,8 @@ public class CharacterSummary
 
     public static void DisplayCharacterSummary(Character newCharacter)
     {
-        Console.WriteLine("\n");
+        Console.Clear();
+
         Console.WriteLine("**************************************************");
         Console.WriteLine("Character successfully created!");
         Console.WriteLine("**************************************************");
