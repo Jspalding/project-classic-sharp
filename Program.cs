@@ -3,7 +3,6 @@ class DnDTableTop
 {
     static void Main()
     {
-        0
         string titleArt = @"
   ____    ___    ____    _____   _     ____   _      _____  _____  ___   ____  
  |  _ \  ( _ )  |  _ \  |_   _| / \   | __ ) | |    | ____||_   _|/ _ \ |  _ \ 
@@ -16,7 +15,6 @@ class DnDTableTop
 
         //TODO: 
         // Look further into Spectre.Console
-        // Add select stat roll type menu
         // Finish standard array method
         // Add race/class modifiers
         // Add sub races/classes
