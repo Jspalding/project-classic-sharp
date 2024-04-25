@@ -3,6 +3,7 @@ class DnDTableTop
 {
     static void Main()
     {
+        0
         string titleArt = @"
   ____    ___    ____    _____   _     ____   _      _____  _____  ___   ____  
  |  _ \  ( _ )  |  _ \  |_   _| / \   | __ ) | |    | ____||_   _|/ _ \ |  _ \ 
@@ -14,7 +15,6 @@ class DnDTableTop
         CreateMainMenu(titleArt);
 
         //TODO: 
-        // Add menu to all other selects (race, class etc)
         // Look further into Spectre.Console
         // Add select stat roll type menu
         // Finish standard array method
@@ -25,7 +25,7 @@ class DnDTableTop
 
     private static void CreateMainMenu(string titleArt)
     {
-        List<string> mainMenuItems = ["Play", "Create", "Exit"];
+        List<string> mainMenuItems = ["Play", "Create new character", "Exit"];
         string mainMenuTitle = titleArt;
 
         int selectedIndex = 0;

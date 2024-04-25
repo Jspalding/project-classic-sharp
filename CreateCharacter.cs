@@ -22,7 +22,7 @@ public class CreateCharacter
         characterClass = SelectCharacterClass();
         character.CharacterClass = characterClass;
 
-        characterAttributes = RollCharacterAttributes();
+        characterAttributes = CreateAttributeSelectTypeMenu(characterAttributes);
         character.CharacterAttributes = characterAttributes;
 
         return character;
@@ -138,13 +138,42 @@ public class CreateCharacter
         return characterClass;
     }
 
-    private static Attributes RollCharacterAttributes()
+    private static Attributes CreateAttributeSelectTypeMenu(Attributes newCharacterAttributes)
+    {
+        List<string> menuItems = ["Input stats", "Roll stats (4d6 method)"];
+        string menuTitle = "Please select how you would like to setup the attributes for this character:";
+        int selectedIndex = 0;
+
+        Menu mainMenu = new(menuTitle, menuItems);
+        selectedIndex = mainMenu.NavigateMenu();
+
+        switch (selectedIndex)
+        {
+            case 0:
+                return InputCharacterAttributes(newCharacterAttributes);
+
+            case 1:
+                return RollCharacterAttributes(newCharacterAttributes);
+
+            default:
+                return RollCharacterAttributes(newCharacterAttributes);
+        }
+    }
+
+    private static Attributes InputCharacterAttributes(Attributes newCharacterAttributes)
+    {
+        Console.WriteLine("Hello");
+        return newCharacterAttributes;
+    }
+
+    private static Attributes RollCharacterAttributes(Attributes newCharacterAttributes)
     {
         Console.Clear();
+
         Console.WriteLine("Rolling for character stats using standard 5E roll rules...");
         Thread.Sleep(300);
 
-        Attributes characterAttributes = new Attributes
+        newCharacterAttributes = new Attributes
         {
             Strength = DiceRolls.RollAttribute(0),
             Dexterity = DiceRolls.RollAttribute(0),
@@ -154,20 +183,20 @@ public class CreateCharacter
             Charisma = DiceRolls.RollAttribute(0)
         };
 
-        Console.WriteLine($"Strength: {characterAttributes.Strength}");
+        Console.WriteLine($"Strength: {newCharacterAttributes.Strength}");
         Thread.Sleep(300);
-        Console.WriteLine($"Dexterity: {characterAttributes.Dexterity}");
+        Console.WriteLine($"Dexterity: {newCharacterAttributes.Dexterity}");
         Thread.Sleep(300);
-        Console.WriteLine($"Constitution: {characterAttributes.Constitution}");
+        Console.WriteLine($"Constitution: {newCharacterAttributes.Constitution}");
         Thread.Sleep(300);
-        Console.WriteLine($"Intelligence: {characterAttributes.Intelligence}");
+        Console.WriteLine($"Intelligence: {newCharacterAttributes.Intelligence}");
         Thread.Sleep(300);
-        Console.WriteLine($"Wisdom: {characterAttributes.Wisdom}");
+        Console.WriteLine($"Wisdom: {newCharacterAttributes.Wisdom}");
         Thread.Sleep(300);
-        Console.WriteLine($"Charisma: {characterAttributes.Charisma}");
+        Console.WriteLine($"Charisma: {newCharacterAttributes.Charisma}");
         Thread.Sleep(300);
 
-        return characterAttributes;
+        return newCharacterAttributes;
     }
 
     private static Attributes AssignStandardArrayAttributes()
@@ -179,7 +208,6 @@ public class CreateCharacter
         };
 
         Console.WriteLine("Starting standard array process");
-
         Console.WriteLine("Choose one of 8, 10, 12, 13, 14, 15 to assign to an attribute.");
         Thread.Sleep(300);
         Console.WriteLine("Strength:");
